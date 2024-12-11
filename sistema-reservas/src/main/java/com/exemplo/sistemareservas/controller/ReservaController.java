@@ -105,7 +105,13 @@ public class ReservaController {
     public List<LivroDTO> listarLivros() {
         List<Livro> livros = livroRepository.findAll();
         return livros.stream()
-                     .map(livro -> new LivroDTO(livro.getAutor(), livro.getTitulo(), livro.getISBN(), livro.isDisponivel()))
+                     .map(livro -> new LivroDTO(
+                         livro.getISBN(),     
+                         livro.getTitulo(),    
+                         livro.getAutor(),      
+                         livro.isDisponivel() 
+                     ))
                      .collect(Collectors.toList());
     }
+
 }
